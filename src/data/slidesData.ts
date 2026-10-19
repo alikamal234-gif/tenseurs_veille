@@ -2,28 +2,39 @@ import { LearningSection, SlideMetadata } from '../types/presentation';
 
 export const LEARNING_SECTIONS: LearningSection[] = [
   {
-    id: 'fondements',
-    title: '1. Fondements des Tenseurs',
-    slideIds: [1, 2, 3],
-    description: 'Comprendre la nature mathématique et informatique des tenseurs dans TensorFlow.'
+    id: 'pourquoi-les-tenseurs',
+    title: '1. Pourquoi les tenseurs ?',
+    slideIds: [1, 2],
+    description: 'Définition, rôle capital dans le Deep Learning et comparaison scalaire/vecteur/matrice/tenseur.',
+    durationMinutes: 5,
   },
   {
-    id: 'representation-images',
-    title: '2. Représentation & Manipulation d\'Images',
-    slideIds: [4, 5, 6],
-    description: 'Analyser les dimensions spatiales, les canaux de couleur et le découpage tensoriel.'
+    id: 'concepts-fondamentaux',
+    title: '2. Concepts fondamentaux',
+    slideIds: [3, 4, 5],
+    description: 'Shape, rank, dtype, dimensions HWC, niveaux de gris vs RGB, représentation de lots et slicing.',
+    durationMinutes: 6,
   },
   {
-    id: 'pipelines-donnees',
-    title: '3. Pipelines & Prétraitements',
-    slideIds: [7, 8, 9],
-    description: 'Maîtriser le chargement par lots, la normalisation et les spécificités des architectures.'
+    id: 'manipulation-tf-keras',
+    title: '3. Manipulation des images avec TensorFlow/Keras',
+    slideIds: [6, 7],
+    description: 'Chargement des images, redimensionnement spatial, conversions de types et pipelines tf.data.Dataset.',
+    durationMinutes: 6,
   },
   {
-    id: 'deep-learning-pratique',
-    title: '4. CNNs, Diagnostic & Atelier Pratique',
+    id: 'pretraitement-images',
+    title: '4. Prétraitement des images',
+    slideIds: [8, 9],
+    description: 'Normalisation [0, 1], normalisation par modèle avec preprocess_input et garantie de cohérence.',
+    durationMinutes: 5,
+  },
+  {
+    id: 'application-deep-learning',
+    title: '5. Application au Deep Learning & Diagnostic',
     slideIds: [10, 11, 12],
-    description: 'Alimenter les réseaux convolutifs, corriger les bugs de dimensions et valider vos acquis.'
+    description: 'Préparation pour CNN, input_shape 4D, diagnostic des erreurs de dimension et évaluation finale.',
+    durationMinutes: 6,
   }
 ];
 
@@ -32,9 +43,9 @@ export const SLIDES_DATA: SlideMetadata[] = [
   {
     id: 1,
     numberString: '01',
-    sectionId: 'fondements',
-    title: 'Introduction : De l\'image au tenseur',
-    shortTitle: 'De l\'image au tenseur',
+    sectionId: 'pourquoi-les-tenseurs',
+    title: 'Définition d\'un Tenseur & Rôle en Deep Learning',
+    shortTitle: 'Pourquoi les Tenseurs ?',
     objective: 'Comprendre comment une image visuelle est numérisée en une grille ordonnée de valeurs numériques exploitables par TensorFlow.',
     definitions: [
       {
@@ -121,9 +132,9 @@ Type des valeurs : <dtype: 'uint8'>`,
   {
     id: 2,
     numberString: '02',
-    sectionId: 'fondements',
-    title: 'Scalaire, Vecteur, Matrice et Tenseur',
-    shortTitle: 'Hiérarchie des Tenseurs',
+    sectionId: 'pourquoi-les-tenseurs',
+    title: 'Scalaire, Vecteur, Matrice et Tenseur : Le Tableau Comparatif',
+    shortTitle: 'Scalaire vs Tenseur',
     objective: 'Différencier rigoureusement les ordres dimensionnels de rang 0 (scalaire) à rang 4 (lot d\'images couleur).',
     definitions: [
       {
@@ -236,9 +247,9 @@ Nombre d'éléments : 4816896`,
   {
     id: 3,
     numberString: '03',
-    sectionId: 'fondements',
-    title: 'Shape, Rank et Dtype',
-    shortTitle: 'Shape, Rank et Dtype',
+    sectionId: 'concepts-fondamentaux',
+    title: 'Shape, Rank et Dtype : Les 3 Piliers d\'un Tenseur',
+    shortTitle: 'Shape, Rank & Dtype',
     objective: 'Maîtriser les 3 piliers d\'un tenseur TensorFlow, calculer son empreinte mémoire et gérer les conversions de type.',
     definitions: [
       {
@@ -329,9 +340,9 @@ Nouveau type   : <dtype: 'float32'>`,
   {
     id: 4,
     numberString: '04',
-    sectionId: 'representation-images',
-    title: 'Dimensions d\'une image : Hauteur, Largeur et Canaux',
-    shortTitle: 'Dimensions & Canaux RGB',
+    sectionId: 'concepts-fondamentaux',
+    title: 'Dimensions d\'une image : Hauteur, Largeur et Canaux (Gris vs RGB)',
+    shortTitle: 'Dimensions HWC & RGB',
     objective: 'Comprendre l\'organisation spatiale (H, W, C) et observer comment les trois canaux Rouge, Vert et Bleu se superposent pour créer les couleurs.',
     definitions: [
       {
@@ -415,8 +426,8 @@ Forme du canal rouge seul : (100, 100)`,
   {
     id: 5,
     numberString: '05',
-    sectionId: 'representation-images',
-    title: 'Indexation et découpage de tenseurs (Slicing)',
+    sectionId: 'concepts-fondamentaux',
+    title: 'Indexation, Découpage (Slicing) & Représentation d\'un Lot',
     shortTitle: 'Indexation & Slicing',
     objective: 'Maîtriser la syntaxe de découpage [start:stop:step] pour extraire des régions d\'intérêt (bounding boxes) et sous-échantillonner des images.',
     definitions: [
@@ -498,8 +509,8 @@ Downsample : (100, 100, 3)`,
   {
     id: 6,
     numberString: '06',
-    sectionId: 'representation-images',
-    title: 'Chargement et redimensionnement d\'images',
+    sectionId: 'manipulation-tf-keras',
+    title: 'Chargement, Décodage et Redimensionnement d\'images',
     shortTitle: 'Chargement & Resize',
     objective: 'Comprendre pourquoi et comment harmoniser la résolution spatiale des images pour les injecter dans une architecture neuronale.',
     definitions: [
@@ -598,8 +609,8 @@ Taille finale   : (224, 224, 3)`,
   {
     id: 7,
     numberString: '07',
-    sectionId: 'pipelines-donnees',
-    title: 'Lots (Batches) et tf.data.Dataset',
+    sectionId: 'manipulation-tf-keras',
+    title: 'Création de Lots (Batches) et tf.data.Dataset',
     shortTitle: 'Batches & tf.data',
     objective: 'Comprendre l\'intérêt des lots d\'images (dimension N) et construire un pipeline de chargement ultra-rapide avec l\'API tf.data.',
     definitions: [
@@ -693,8 +704,8 @@ for premier_lot in dataset.take(1):
   {
     id: 8,
     numberString: '08',
-    sectionId: 'pipelines-donnees',
-    title: 'Normalisation des pixels',
+    sectionId: 'pretraitement-images',
+    title: 'Normalisation des Pixels ([0, 255] -> [0.0, 1.0])',
     shortTitle: 'Normalisation des Pixels',
     objective: 'Comprendre pourquoi l\'échelle [0, 255] déstabilise l\'apprentissage et maîtriser les techniques de remise à l\'échelle [0, 1] et [-1, 1].',
     definitions: [
@@ -782,9 +793,9 @@ Centré [-1,1]   :
   {
     id: 9,
     numberString: '09',
-    sectionId: 'pipelines-donnees',
-    title: 'Prétraitements spécifiques et preprocess_input',
-    shortTitle: 'Modèles & preprocess_input',
+    sectionId: 'pretraitement-images',
+    title: 'Prétraitements spécifiques, preprocess_input et Cohérence',
+    shortTitle: 'preprocess_input & Cohérence',
     objective: 'Comprendre pourquoi chaque modèle pré-entraîné (ResNet, MobileNet, EfficientNet) exige sa propre fonction preprocess_input et comment éviter les incohérences.',
     definitions: [
       {
@@ -880,9 +891,9 @@ MobileNet ([-1, 1]): [ 0.5686 -0.2157 -0.6078]`,
   {
     id: 10,
     numberString: '10',
-    sectionId: 'deep-learning-pratique',
-    title: 'Préparation des données pour un CNN',
-    shortTitle: 'Entrée d\'un CNN & 4D',
+    sectionId: 'application-deep-learning',
+    title: 'Préparation des Images pour un CNN & Correspondance input_shape',
+    shortTitle: 'Entrée CNN & input_shape',
     objective: 'Comprendre pourquoi et comment transformer une image 3D individuelle en un tenseur 4D avec tf.expand_dims pour l\'inférence.',
     definitions: [
       {
@@ -981,8 +992,8 @@ Shape de la prédiction   : (1, 10)`,
   {
     id: 11,
     numberString: '11',
-    sectionId: 'deep-learning-pratique',
-    title: 'Erreurs courantes et débogage',
+    sectionId: 'application-deep-learning',
+    title: 'Erreurs Courantes (Dimensions, Dtypes, NCHW vs NHWC) & Débogage',
     shortTitle: 'Erreurs & Débogage',
     objective: 'Reconnaître et résoudre instantanément les 5 erreurs les plus fréquentes en manipulation d\'images avec TensorFlow.',
     definitions: [
@@ -1069,8 +1080,8 @@ print("Forme corrigée :", image_prete.shape) # (1, 28, 28, 1)`,
   {
     id: 12,
     numberString: '12',
-    sectionId: 'deep-learning-pratique',
-    title: 'Atelier pratique interactif et Quiz final',
+    sectionId: 'application-deep-learning',
+    title: 'Atelier Pratique Interactif, Quiz d\'Évaluation & Synthèse',
     shortTitle: 'Atelier & Quiz Final',
     objective: 'Mettre en pratique l\'ensemble des concepts dans un bac à sable interactif de bout en bout et valider vos connaissances avec le quiz final.',
     definitions: [

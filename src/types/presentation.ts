@@ -5,6 +5,7 @@ export interface LearningSection {
   title: string;
   slideIds: SlideId[];
   description: string;
+  durationMinutes?: number;
 }
 
 export interface CodeLineExplanation {
